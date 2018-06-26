@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-
+from sklearn.metrics import classification_report
 
 def load_training_data():
     '''
@@ -121,11 +121,13 @@ def process_data(train):
     return train
 
 def split_feature_target(train):
-    # define inputs (ignore address)
+    '''
+    Split feature vs. target 
+
+    '''
     X=train.drop('Survived',axis=1) # define features
     y=train['Survived']     # define taget 
     return X,y    
-
 
 if __name__=='__main__':
 
@@ -144,6 +146,5 @@ if __name__=='__main__':
     predictions = logmodel.predict(X_test)  # Perform predictions
 
     # Model Evaluation - 
-    from sklearn.metrics import classification_report
     print(classification_report(y_test,predictions))
 
