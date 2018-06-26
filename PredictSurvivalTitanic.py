@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report,confusion_matrix
 
 def load_training_data():
     '''
@@ -146,5 +146,6 @@ if __name__=='__main__':
     predictions = logmodel.predict(X_test)  # Perform predictions
 
     # Model Evaluation - 
+    print(confusion_matrix(y_test,predictions))
     print(classification_report(y_test,predictions))
 
